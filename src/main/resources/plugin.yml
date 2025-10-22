@@ -1,0 +1,418 @@
+name: Corrections
+prefix: Corrections
+version: '2.1.1'
+description: Professional guard system with LuckPerms integration, WorldGuard regions, combat timers, contraband enforcement, and duty banking
+author: LSDMC
+website: https://lsdmc.dev
+main: dev.lsdmc.edenCorrections.EdenCorrections
+api-version: '1.21'
+softdepend: [CMI, Vault, WorldGuard, PlaceholderAPI, CoinsEngine, Citizens, ProtocolLib]
+
+commands:
+  duty:
+    description: Toggle guard duty status
+    usage: /duty
+    permission: edencorrections.guard.duty
+    permission-message: You don't have permission to use this command!
+  
+  chase:
+    description: Start or manage chases
+    usage: /chase <player|capture|end>
+    permission: edencorrections.guard.chase
+    permission-message: You don't have permission to use this command!
+    
+  jail:
+    description: Jail a player
+    usage: /jail <player> [reason]
+    permission: edencorrections.guard.jail
+    permission-message: You don't have permission to use this command!
+    
+  jailoffline:
+    description: Jail an offline player
+    usage: /jailoffline <player> [reason]
+    permission: edencorrections.guard.admin
+    permission-message: You don't have permission to use this command!
+    
+  corrections:
+    description: Admin commands for Corrections
+    usage: /corrections <wanted|chase|duty|penalty|player|system|reload|help>
+    permission: edencorrections.admin
+    permission-message: You don't have permission to use this command!
+
+  sword:
+    description: Request player to drop their sword
+    usage: /sword <player>
+    permission: edencorrections.guard.contraband
+    permission-message: You don't have permission to use this command!
+    
+  bow:
+    description: Request player to drop their bow
+    usage: /bow <player>
+    permission: edencorrections.guard.contraband
+    permission-message: You don't have permission to use this command!
+    
+  axe:
+    description: Request player to drop their axe
+    usage: /axe <player>
+    permission: edencorrections.guard.contraband
+    permission-message: You don't have permission to use this command!
+    
+  armor:
+    description: Request player to drop their armor
+    usage: /armor <player>
+    permission: edencorrections.guard.contraband
+    permission-message: You don't have permission to use this command!
+    
+  potion:
+    description: Request player to drop potions
+    usage: /potion <player>
+    permission: edencorrections.guard.contraband
+    permission-message: You don't have permission to use this command!
+    
+  drugtest:
+    description: Perform drug test on player
+    usage: /drugtest <player>
+    permission: edencorrections.guard.contraband
+    permission-message: You don't have permission to use this command!
+    
+  potiontest:
+    description: Perform potion test on player
+    usage: /potiontest <player>
+    permission: edencorrections.guard.contraband
+    permission-message: You don't have permission to use this command!
+    
+  dutybank:
+    description: Manage duty time banking and conversion
+    usage: /dutybank <convert|status>
+    permission: edencorrections.guard.banking
+    permission-message: You don't have permission to use this command!
+    
+  tips:
+    description: Show helpful tips for using the corrections system
+    usage: /tips [duty|contraband|chase|jail|banking]
+    permission: edencorrections.guard
+    permission-message: You don't have permission to use this command!
+    
+  area:
+    description: Manage chase restricted areas
+    usage: /area <list|add|remove|check> [area_name]
+    permission: edencorrections.admin.area
+    permission-message: You don't have permission to use this command!
+    
+  guardspawn:
+    description: Manage guard spawn location
+    usage: /guardspawn <set|clear|info>
+    permission: edencorrections.admin.guardspawn
+    permission-message: You don't have permission to use this command!
+    
+  transfer:
+    description: Transfer items between on-duty and off-duty inventories
+    usage: /transfer <hand|held> [to-offduty|to-onduty]
+    permission: edencorrections.guard.transfer
+    permission-message: You don't have permission to use this command!
+    
+  
+
+  ecpromote:
+    description: EdenCorrections promote (namespaced)
+    usage: /ecpromote
+    permission: edencorrections.progression.use
+    permission-message: You don't have permission to use this command!
+
+  ecprogress:
+    description: EdenCorrections progress (namespaced)
+    usage: /ecprogress
+    permission: edencorrections.progression.use
+    permission-message: You don't have permission to use this command!
+
+  ecrankup:
+    description: EdenCorrections rankup (namespaced)
+    usage: /ecrankup
+    permission: edencorrections.progression.use
+    permission-message: You don't have permission to use this command!
+  ecdemote:
+    description: Demote a guard and force off-duty with inventory restore
+    usage: /ecdemote <player> [toRank|none]
+    permission: edencorrections.admin
+    permission-message: You don't have permission to use this command!
+    
+  loot:
+    description: Manage guard loot system and test drops
+    usage: /loot <test|reload|info> [rank]
+    permission: edencorrections.admin.loot
+    permission-message: You don't have permission to use this command!
+    
+  retrieve:
+    description: Retrieve your stored inventory after guard death
+    usage: /retrieve
+    permission: edencorrections.guard.retrieve
+    permission-message: You don't have permission to use this command!
+
+  buyback:
+    description: Buy back confiscated contraband
+    usage: /buyback
+    permission: edencorrections.guard.retrieve
+    permission-message: You don't have permission to use this command!
+
+  contrabandinfo:
+    description: Display contraband system configuration and statistics
+    usage: /contrabandinfo
+    permission: edencorrections.admin.contrabandinfo
+    permission-message: You don't have permission to use this command!
+
+  arrestminigame:
+    description: Test the arrest minigame without starting a jail countdown
+    usage: /arrestminigame [durationSeconds]
+    permission: edencorrections.admin
+    permission-message: You don't have permission to use this command!
+
+  buybacknpc:
+    description: Manage buyback NPC locations and settings
+    usage: /buybacknpc <add|remove|list|info|reload>
+    permission: edencorrections.admin.buybacknpc
+    permission-message: You don't have permission to use this command!
+
+  locker:
+    description: Manage guard lockers (tag/untag/info)
+    usage: /locker <tag [player]|untag|info>
+    permission: edencorrections.admin.locker
+    permission-message: You don't have permission to use this command!
+
+permissions:
+  corrections.*:
+    description: Full access to all Corrections features (aliases old nodes)
+    default: op
+    children:
+      edencorrections.*: true
+
+  corrections.guard.*:
+    description: All guard permissions (aliases old nodes)
+    default: false
+    children:
+      edencorrections.guard.*: true
+
+  corrections.guard:
+    description: Base guard permission (alias)
+    default: false
+    children:
+      edencorrections.guard: true
+
+  corrections.guard.duty:
+    description: Permission to use duty commands (alias)
+    default: false
+    children:
+      edencorrections.guard.duty: true
+
+  corrections.guard.chase:
+    description: Permission to start chases (alias)
+    default: false
+    children:
+      edencorrections.guard.chase: true
+
+  corrections.guard.jail:
+    description: Permission to jail players (alias)
+    default: false
+    children:
+      edencorrections.guard.jail: true
+
+  corrections.guard.contraband:
+    description: Permission to request contraband and perform drug tests (alias)
+    default: false
+    children:
+      edencorrections.guard.contraband: true
+
+  corrections.guard.banking:
+    description: Permission to use duty time banking system (alias)
+    default: false
+    children:
+      edencorrections.guard.banking: true
+
+  corrections.progression.use:
+    description: Permission to use Corrections progression commands (alias)
+    default: false
+    children:
+      edencorrections.progression.use: true
+
+  corrections.guard.retrieve:
+    description: Permission to retrieve stored inventory after death (alias)
+    default: false
+    children:
+      edencorrections.guard.retrieve: true
+
+  corrections.admin.*:
+    description: All administrative permissions (alias)
+    default: op
+    children:
+      edencorrections.admin.*: true
+
+  corrections.admin:
+    description: Full administrative access to Corrections (alias)
+    default: op
+    children:
+      edencorrections.admin: true
+
+  corrections.admin.area:
+    description: Permission to manage chase restricted areas (alias)
+    default: op
+    children:
+      edencorrections.admin.area: true
+
+  corrections.admin.loot:
+    description: Permission to manage guard loot system (alias)
+    default: op
+    children:
+      edencorrections.admin.loot: true
+
+  corrections.admin.penalty:
+    description: Permission to manage player penalties (alias)
+    default: op
+    children:
+      edencorrections.admin.penalty: true
+
+  corrections.admin.guardspawn:
+    description: Permission to manage guard spawn location (alias)
+    default: op
+    children:
+      edencorrections.admin.guardspawn: true
+
+  corrections.admin.buybacknpc:
+    description: Permission to manage buyback NPC locations and settings (alias)
+    default: op
+    children:
+      edencorrections.admin.buybacknpc: true
+
+  corrections.admin.locker:
+    description: Permission to tag/untag guard lockers (alias)
+    default: op
+    children:
+      edencorrections.admin.locker: true
+
+  corrections.guard.transfer:
+    description: Permission to transfer items between duty inventories (alias)
+    default: false
+    children:
+      edencorrections.guard.transfer: true
+
+  corrections.admin.bypass.guard-rank:
+    description: Permission to bypass guard rank requirements (alias)
+    default: false
+    children:
+      edencorrections.admin.bypass.guard-rank: true
+
+  corrections.admin.bypass.cooldown:
+    description: Permission to bypass duty cooldown restrictions (alias)
+    default: op
+    children:
+      edencorrections.admin.bypass.cooldown: true
+
+  edencorrections.*:
+    description: Full access to all EdenCorrections features
+    default: op
+    children:
+      edencorrections.guard.*: true
+      edencorrections.admin.*: true
+      
+  edencorrections.guard.*:
+    description: All guard permissions
+    default: false
+    children:
+      edencorrections.guard: true
+      edencorrections.guard.duty: true
+      edencorrections.guard.chase: true
+      edencorrections.guard.jail: true
+      edencorrections.guard.contraband: true
+      edencorrections.guard.banking: true
+      edencorrections.progression.use: true
+      edencorrections.guard.retrieve: true
+      edencorrections.guard.admin: true
+      
+  edencorrections.guard:
+    description: Base guard permission
+    default: false
+    
+  edencorrections.guard.duty:
+    description: Permission to use duty commands
+    default: false
+    
+  edencorrections.guard.chase:
+    description: Permission to start chases
+    default: false
+    
+  edencorrections.guard.jail:
+    description: Permission to jail players
+    default: false
+    
+  edencorrections.guard.contraband:
+    description: Permission to request contraband and perform drug tests
+    default: false
+    
+  edencorrections.guard.banking:
+    description: Permission to use duty time banking system
+    default: false
+    
+  edencorrections.progression.use:
+    description: Permission to use EdenCorrections progression commands
+    default: false
+
+  edencorrections.progression.admin:
+    description: Admin control for EdenCorrections progression
+    default: op
+    
+  edencorrections.guard.retrieve:
+    description: Permission to retrieve stored inventory after death
+    default: false
+    
+  edencorrections.guard.admin:
+    description: Administrative guard permissions
+    default: false
+    
+  edencorrections.admin.*:
+    description: All administrative permissions
+    default: op
+    children:
+      edencorrections.admin: true
+      edencorrections.admin.area: true
+      edencorrections.admin.loot: true
+      edencorrections.admin.penalty: true
+      edencorrections.admin.guardspawn: true
+      edencorrections.admin.buybacknpc: true
+      
+  edencorrections.admin:
+    description: Full administrative access to EdenCorrections
+    default: op
+    
+  edencorrections.admin.area:
+    description: Permission to manage chase restricted areas
+    default: op
+    
+  edencorrections.admin.loot:
+    description: Permission to manage guard loot system
+    default: op
+
+  edencorrections.admin.penalty:
+    description: Permission to manage player penalties
+    default: op
+
+  edencorrections.admin.guardspawn:
+    description: Permission to manage guard spawn location
+    default: op
+    
+  edencorrections.admin.buybacknpc:
+    description: Permission to manage buyback NPC locations and settings
+    default: op
+
+  edencorrections.admin.locker:
+    description: Permission to tag/untag guard lockers
+    default: op
+
+  edencorrections.guard.transfer:
+    description: Permission to transfer items between duty inventories
+    default: false
+
+  edencorrections.admin.bypass.guard-rank:
+    description: Permission to bypass guard rank requirements (WARNING - Development only)
+    default: false
+
+  edencorrections.admin.bypass.cooldown:
+    description: Permission to bypass duty cooldown restrictions
+    default: op

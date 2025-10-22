@@ -1,0 +1,1550 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+core:
+  debug: false
+  language: en
+jail-system:
+  base-time: 300
+  level-multiplier: 60
+  max-wanted-level: 5
+  countdown: 10
+  countdown-radius: 5.0
+  chase-integration:
+    enabled: true
+    flee-threshold: 2.5
+  minigame:
+    
+    enabled: true
+    
+    
+    bar-length: 9 
+    pointer-char: ■ 
+    empty-char: □ 
+    
+    
+    refresh-ticks: 2 
+    success-start: 3 
+    success-end: 5 
+    success-window-size: 1 
+    miss-threshold: 3 
+    
+    
+    speed-variation:
+      enabled: false 
+      min-speed: 1 
+      max-speed: 4 
+      change-interval: 3 
+    
+    
+    direction-change:
+      enabled: true 
+      random-direction: false 
+    
+    
+    
+  
+  
+chase-system:
+  max-distance: 100
+  warning-distance: 20
+  max-concurrent: 3
+  restrictions:
+    prevent-chase-during-combat: false
+    block-restricted-areas: true
+    restricted-areas: ''
+    auto-end-in-restricted-area: false
+    
+    prevent-teleport: true
+    allowed-plugin-teleport-distance: 1.0
+    allow-admin-teleports: true
+combat-system:
+  timer-duration: 5
+  prevent-capture: true
+  prevent-teleport: true
+user-interface:
+  boss-bars:
+    enabled: true
+    wanted:
+      enabled: true
+      color: RED
+      overlay: PROGRESS
+    chase:
+      enabled: true
+      color: BLUE
+      overlay: PROGRESS
+    combat:
+      enabled: true
+      color: RED
+      overlay: PROGRESS
+    jail:
+      enabled: true
+      color: PURPLE
+      overlay: PROGRESS
+    duty:
+      enabled: true
+      color: GREEN
+      overlay: PROGRESS
+    contraband:
+      enabled: true
+      color: YELLOW
+      overlay: PROGRESS
+    grace-period:
+      enabled: true
+      color: PINK
+      overlay: PROGRESS
+    penalty:
+      enabled: true
+      color: RED
+      overlay: PROGRESS
+      duration: 30
+performance:
+  spam-control:
+    duty-system:
+      disable-continuous-messages: true
+      show-status-changes-only: true
+      notification-cooldown: 30
+      disable-performance-spam: true
+      show-bonuses-once: true
+    chase-system:
+      disable-distance-warnings: false
+      distance-warning-cooldown: 10
+      disable-status-spam: true
+    combat-system:
+      disable-timer-spam: true
+      show-start-end-only: true
+    general:
+      disable-debug-spam: true
+      message-cooldown: 5
+      disable-error-spam: true
+  caching:
+    enable-message-cache: true
+    message-cache-size: 1000
+    enable-database-cache: true
+    database-cache-size: 500
+    cache-cleanup-interval: 300
+    database-cleanup-interval: 600
+
+
+
+
+
+integration:
+  
+  
+  
+  buyback-npc:
+    enabled: true
+    prefer-citizens: true
+    spawn-interval-seconds: 300
+    npc-name: '<color:#e63700>&lTHE REAPER'
+    npc-type: WITHER_SKELETON
+    citizens:
+      protected: true
+    
+    
+    
+    
+    
+    
+    locations: []
+
+
+
+times:
+  wanted-duration: 1800
+  contraband-compliance: 10
+
+
+wanted-levels:
+  level-1:
+    duration: 300 
+  level-2:
+    duration: 420 
+  level-3:
+    duration: 600 
+  level-4:
+    duration: 720 
+  level-5:
+    duration: 900 
+
+
+
+
+
+
+database:
+  type: sqlite
+  sqlite:
+    maintenance:
+      enabled: true
+      enable-vacuum: true
+      vacuum-timeout: 10000
+      maintenance-interval: 60
+    file: edencorrections.db
+  mysql:
+    host: localhost
+    port: 3306
+    database: edencorrections
+    username: username
+    password: password
+
+
+
+
+
+
+security:
+  
+  
+  
+  strict-rank-enforcement: true
+  
+  
+  
+  admin-bypass:
+    enabled: false
+    
+  
+  
+  guard-validation:
+    
+    require-luckperms: true
+    
+    log-unauthorized-attempts: true
+    
+    warn-unauthorized-players: true
+    
+    anti-spam:
+      
+      enabled: true
+      
+      warning-cooldown: 300
+      
+      log-cooldown: 60
+      
+      max-warnings: 3
+      
+      max-logs: 5
+  
+  
+  duty-notifications:
+    
+    enabled: true
+    
+    method: chat
+    
+    actionbar-duration: 5
+  
+  
+  guard-immunity:
+    enabled: true
+    wanted-protection: true 
+    chase-protection: true 
+    contraband-protection: true 
+    jail-protection: true 
+    combat-protection: false 
+    teleport-protection: false 
+    guard-to-guard-protection: true 
+
+
+
+
+
+
+penalty-escalation:
+  bypass:
+    earned-time-bonus: 60
+    clear-penalty-tracking: true
+    remove-potion-effects: true
+
+
+banking-system:
+  
+  enabled: true
+  
+  
+  conversion-rate: 100
+  
+  
+  minimum-conversion: 300
+  
+  
+  auto-convert: false
+  auto-convert-threshold: 3600
+  
+  
+  currency-command: et give {player} {amount}
+
+
+guard-system:
+  
+  
+  
+  
+  
+  
+  
+  default-on-duty: true
+  
+  
+  transfer:
+    
+    
+    blacklisted-items:
+      - NETHERITE_SWORD
+      - DIAMOND_SWORD
+      - IRON_SWORD
+      - GOLDEN_SWORD
+      - WOODEN_SWORD
+      - NETHERITE_AXE
+      - DIAMOND_AXE
+      - IRON_AXE
+      - GOLDEN_AXE
+      - WOODEN_AXE
+      - BOW
+      - CROSSBOW
+      - TRIDENT
+      - NETHERITE_CHESTPLATE
+      - NETHERITE_HELMET
+      - NETHERITE_LEGGINGS
+      - NETHERITE_BOOTS
+      - NETHERITE_PICKAXE
+      - BEDROCK
+      - BARRIER
+      - COMMAND_BLOCK
+      - CHAIN_COMMAND_BLOCK
+      - REPEATING_COMMAND_BLOCK
+      - STRUCTURE_BLOCK
+      - STRUCTURE_VOID
+      - JIGSAW
+      - END_CRYSTAL
+      - DRAGON_EGG
+      - ELYTRA
+      - ZOMBIE_SPAWN_EGG
+      - SKELETON_SPAWN_EGG
+      - CREEPER_SPAWN_EGG
+      - WITHER_SKELETON_SPAWN_EGG
+      - BLAZE_SPAWN_EGG
+      
+    
+    
+    
+    dynamic-detection:
+      enabled: true 
+      log-kit-items: true 
+      check-full-metadata: true 
+      
+      
+      kit-capture-delay-ticks: 1 
+      batch-logging: true 
+      skip-identical-inventories: true 
+      only-debug-individual-items: true 
+  
+  restrictions:
+    block-mining: true
+    block-crafting: true
+    block-storage: true
+    block-item-dropping: true
+  penalty-escalation:
+    enabled: true
+    grace-period: 5
+    stages:
+      stage-1:
+        time-minutes: 5
+        slowness-level: 1
+        economy-penalty: 1000
+        warning-message: true
+      stage-2:
+        time-minutes: 10
+        slowness-level: 2
+        economy-penalty: 1000
+        warning-message: true
+      recurring:
+        interval-minutes: 5
+        slowness-level: 2
+        economy-penalty: 1000
+        warning-message: true
+  
+  duty-region: guard
+  
+  
+  immobilization-time: 5
+  
+  
+  off-duty-earning:
+    
+    base-duty-requirement: 15
+    
+    base-off-duty-earned: 30
+    
+    performance-bonuses:
+      
+      searches-per-bonus: 10
+      search-bonus-time: 5
+      
+      successful-search-bonus: 10
+      
+      successful-arrest-bonus: 8
+      
+      kills-per-bonus: 5
+      kill-bonus-time: 15
+      
+      successful-detection-bonus: 10
+      
+      duty-time-bonus-rate: 2 
+  
+  
+  rank-mappings:
+    trainee: trainee
+    private: private
+    officer: officer
+    sergeant: sergeant
+    captain: captain
+  
+  
+  kit-mappings:
+    trainee: trainee
+    private: private
+    officer: officer
+    sergeant: sergeant
+    captain: captain
+  spawn:
+    world: aSeason4
+    x: -487.0174866935017
+    y: 221.0
+    z: -844.0097705299436
+    yaw: -90.0589
+    pitch: -0.111865155
+
+
+contraband-system:
+  enabled: true
+  drug-detection: true
+  
+  
+  max-request-distance: 5
+  
+  
+  compliance-grace-period: 3
+  
+  
+  drug-test:
+    enabled: true
+    
+    max-distance: 5
+    
+    cooldown: 60
+    
+    contraband-items:
+    - SUGAR
+    - NETHER_WART
+    - SPIDER_EYE
+    - FERMENTED_SPIDER_EYE
+    - BLAZE_POWDER
+    - GLOWSTONE_DUST
+    - REDSTONE
+    - GUNPOWDER
+    - POTION
+    - SPLASH_POTION
+    - LINGERING_POTION
+    
+    illegal-potions:
+    - POISON
+    - HARMING
+    - WEAKNESS
+    - SLOWNESS
+    - SLOW_FALLING
+    - INVISIBILITY
+    - NIGHT_VISION
+    - STRENGTH
+    - SPEED
+    - JUMP
+    
+    suspicious-effects:
+    - POISON
+    - BLINDNESS
+    - CONFUSION
+    - SLOW_DIGGING
+    - WEAKNESS
+    - WITHER
+    - UNLUCK
+    - BAD_OMEN
+    - STRENGTH
+    - SPEED
+    - JUMP_BOOST
+    - INVISIBILITY
+    - NIGHT_VISION
+    - FIRE_RESISTANCE
+    - WATER_BREATHING
+    
+    positive-test-criteria:
+      
+      min-contraband-items: 1
+      
+      check-illegal-potions: true
+      
+      check-suspicious-effects: true
+      
+      min-effect-duration: 200
+    
+    consequences:
+      
+      increase-wanted-level: true
+      wanted-level-increase: 1
+      
+      confiscate-drugs: true
+      
+      award-performance: true
+      
+      log-results: true
+
+  
+  potion-test:
+    
+    cooldown-seconds: 500
+  
+  
+  types:
+    sword:
+      items: WOODEN_SWORD,STONE_SWORD,IRON_SWORD,GOLDEN_SWORD,DIAMOND_SWORD,NETHERITE_SWORD
+      description: All swords and bladed weapons
+    bow:
+      items: BOW,CROSSBOW
+      description: All ranged weapons
+    axe:
+      items: WOODEN_AXE,STONE_AXE,IRON_AXE,GOLDEN_AXE,DIAMOND_AXE,NETHERITE_AXE
+      description: All axes
+    armor:
+      items: CHAINMAIL_HELMET,CHAINMAIL_CHESTPLATE,CHAINMAIL_LEGGINGS,CHAINMAIL_BOOTS,IRON_HELMET,IRON_CHESTPLATE,IRON_LEGGINGS,IRON_BOOTS,GOLDEN_HELMET,GOLDEN_CHESTPLATE,GOLDEN_LEGGINGS,GOLDEN_BOOTS,DIAMOND_HELMET,DIAMOND_CHESTPLATE,DIAMOND_LEGGINGS,DIAMOND_BOOTS,NETHERITE_HELMET,NETHERITE_CHESTPLATE,NETHERITE_LEGGINGS,NETHERITE_BOOTS
+      description: All armor pieces
+    drugs:
+      items: SUGAR,NETHER_WART,SPIDER_EYE,FERMENTED_SPIDER_EYE,BLAZE_POWDER
+      description: Illegal substances and drugs
+    potion:
+      items: POTION,SPLASH_POTION,LINGERING_POTION,SUSPICIOUS_STEW
+      description: Potions and suspicious substances
+
+  
+  confiscation:
+    enabled: true
+    
+    mode: specific
+    
+    storage-duration: 3600
+    pricing:
+      
+      mode: set
+      set-price: 10000
+      rng:
+        min: 500
+        max: 2500
+
+
+
+
+
+
+regions:
+  
+  no-chase-zones:
+    - koth2
+    - takeover
+    - takeoverkeepinv
+    - koth
+  
+  
+  duty-required-zones:
+    - guard_lockers
+    - guard_lockers2
+    - guardplotstairs
+  
+  
+  duty-restricted-zones:
+    - restricted_example
+
+  
+  
+  
+  duty-disallowed-zones-by-rank:
+    trainee: [fedpvp,fedpvp2, fmain, emain, dmain, cbadeny, hgpvp, hmain, gmain]
+    private: [fedpvp,fedpvp2, fmain, emain, dmain, cbadeny]
+    officer: [cbadeny]
+    sergeant: []
+    captain: []
+  
+  
+  wanted-exempt-zones:
+    - koth2
+    - takeover
+    - takeoverkeepinv
+    - koth
+
+
+
+
+
+
+
+
+
+
+
+progression:
+  enabled: true
+  
+  auto-promotion: false
+  
+  
+  
+  rank-limits:
+    private: -1 
+    officer: -1 
+    sergeant: 5 
+    captain: 3 
+  
+  
+  rankup:
+    enabled: true
+    use-track: true
+    track: guard
+    
+    economy-mode: vault
+    et:
+      placeholder: '%coinsengine_balance_ecotokens%'
+      deduct-command: et take {player} {amount}
+    requirements:
+      private:
+        arrests: 3
+        kills: 5
+        duty_time_seconds: 3600
+        vault_money: 0.0
+        et_tokens: 500
+      officer:
+        arrests: 6
+        kills: 15
+        duty_time_seconds: 10800
+        vault_money: 0.0
+        et_tokens: 2000
+      sergeant:
+        arrests: 12
+        kills: 30
+        duty_time_seconds: 21600
+        vault_money: 0.0
+        et_tokens: 5000
+      captain:
+        arrests: 20
+        kills: 100
+        duty_time_seconds: 86400
+        vault_money: 0.0
+        et_tokens: 10000
+
+
+
+
+
+
+
+
+
+
+
+prefix: '<gradient:#9D4EDD:#06FFA5>[₠]</gradient> '
+
+
+messages:
+  
+  universal:
+    no-permission: <gradient:
+      don''t have permission to use this command!</color>
+    player-not-found: <gradient:
+      not find player '<color:#FFB3C6>{player}</color>'</color>
+    invalid-usage: '<gradient:#FFA94D:#FFB570>⚠️ Invalid Usage</gradient> <color:#ADB5BD>Correct
+      usage: <color:
+    success: <gradient:
+    successful: <gradient:
+      completed successfully!</color>
+    failed: <gradient:
+      could not be completed</color>
+    player-only: <gradient:
+      command can only be used by players!</color>
+    unknown-subcommand: '<gradient:#FF6B6B:#FF8E8E>❓ Unknown Command</gradient> <color:#ADB5BD>Unknown
+      subcommand: <color:
+    missing-args: '<gradient:#FFA94D:#FFB570>📝 Missing Arguments</gradient> <color:#ADB5BD>Command
+      requires more arguments: <color:
+    invalid-number: '<gradient:#FF6B6B:#FF8E8E>🔢 Invalid Number</gradient> <color:#ADB5BD>Expected
+      a number but got: <color:
+    info: <gradient:
+  
+  
+  external:
+    
+    wanted-status: Wanted Level %edencorrections_wanted_level% %edencorrections_wanted_stars%
+    duty-status: 'Duty: %edencorrections_duty_status%'
+    chase-status: 'Chase: %edencorrections_chase_target%'
+    tokens-display: 'Tokens: %edencorrections_banking_tokens%'
+    rank-display: 'Rank: %edencorrections_duty_rank%'
+    
+    
+    bossbar:
+      wanted: '⭐ WANTED LEVEL %edencorrections_wanted_level% %edencorrections_wanted_stars% - %edencorrections_wanted_time%s remaining'
+      chase-target: '🏃 BEING CHASED by %edencorrections_chase_guard% - Time: %edencorrections_chase_time%s'
+      chase-guard: '🏃 CHASING %edencorrections_chase_target% - Time: %edencorrections_chase_time%s'
+      grace-period: '⏰ Grace Period: %seconds%s remaining'
+      combat-timer: '⚔ Combat Timer: %seconds%s remaining'
+
+  
+  jail:
+    minigame:
+      title: '⛓ Arrest Minigame'
+      hint: '(Shift in green)'
+      bracket-left: '['
+      bracket-right: ']'
+      colors:
+        title: '<gradient:#9D4EDD:#06FFA5>'
+        frame: '<color:#ADB5BD>'
+        success-window: '<color:#51CF66>'
+        pointer-success: '<color:#51CF66>'
+        pointer-danger: '<color:#FF6B6B>'
+        hint-text: '<color:#FFE066>'
+  
+  
+  system:
+    startup: <gradient:
+      started successfully!</color>
+    shutdown: <gradient:
+      shutting down...</color>
+    reload-success: <gradient:
+      and messages reloaded successfully!</color>
+    reload-failed: '<gradient:#FF6B6B:#FF8E8E>❌ Reload Failed</gradient> <color:#ADB5BD>Error:
+      <color:
+    guard-alert: <gradient:
+    guard-on-duty: <gradient:
+      has come on duty!</color>
+    info: '{message}'
+    error:
+      general: <gradient:
+        error occurred. Please contact an administrator.</color>
+    admin:
+      area:
+        wip: <gradient:
+          management updates are not implemented yet.</color>
+        not-found: <gradient:
+          region <color:
+        not-in-list: <gradient:
+          <color:
+        add-success: <gradient:
+          <color:
+        remove-success: <gradient:
+          <color:
+        list-header: <gradient:
+        list-entry: <color:
+        check-current: <gradient:
+
+  
+  debug:
+    enabled: <gradient:
+      mode has been enabled</color>
+    diagnostic-report: <gradient:
+      diagnostic information generated</color>
+  
+  
+  
+  
+
+  
+  tips_text:
+    duty-system:
+      header: '<gradient:#9D4EDD:#06FFA5>💡 Duty System Tips</gradient>'
+      line1: '<color:#ADB5BD>• Use <color:#06FFA5>/duty</color> to toggle your duty status</color>'
+      line2: '<color:#ADB5BD>• You must be in the guard station to go on/off duty</color>'
+      line3: '<color:#ADB5BD>• Your inventory is automatically saved when going on duty</color>'
+      line4: '<color:#ADB5BD>• Earn off-duty time by performing guard duties effectively</color>'
+      line5: '<color:#ADB5BD>• Stay on duty for <color:#FFB3C6>15+ minutes</color> to earn your first break</color>'
+    contraband-system:
+      header: '<gradient:#9D4EDD:#06FFA5>💡 Contraband System Tips</gradient>'
+      line1: '<color:#ADB5BD>• Use <color:#06FFA5>/sword</color>, <color:#06FFA5>/bow</color>, <color:#06FFA5>/armor</color>, <color:#06FFA5>/drugs</color> to search players</color>'
+      line2: '<color:#ADB5BD>• Players have <color:#FFB3C6>10 seconds</color> to drop requested items</color>'
+      line3: '<color:#ADB5BD>• Use <color:#06FFA5>/drugtest</color> to test for illegal substances</color>'
+      line4: '<color:#ADB5BD>• Successful searches earn you bonus off-duty time</color>'
+    chase-system:
+      header: '<gradient:#9D4EDD:#06FFA5>💡 Chase System Tips</gradient>'
+      line1: '<color:#ADB5BD>• Use <color:#06FFA5>/chase</color> to start chasing any player</color>'
+      line2: '<color:#ADB5BD>• Use <color:#06FFA5>/chase capture</color> when close to arrest them</color>'
+      line3: '<color:#ADB5BD>• Chases automatically end if you get too far apart</color>'
+      line4: '<color:#ADB5BD>• Maximum chase distance is <color:#FFB3C6>100 blocks</color></color>'
+      line5: '<color:#ADB5BD>• You''ll get warnings at <color:#FFB3C6>20 blocks</color> distance</color>'
+      line6: '<color:#ADB5BD>• Chased players cannot enter restricted areas</color>'
+    jail-system:
+      header: '<gradient:#9D4EDD:#06FFA5>💡 Jail System Tips</gradient>'
+      line1: '<color:#ADB5BD>• Use <color:#06FFA5>/jail</color> to arrest someone</color>'
+      line2: '<color:#ADB5BD>• Stay close during the <color:#FFB3C6>10-second</color> arrest countdown</color>'
+      line3: '<color:#ADB5BD>• Jail time is based on the player''s wanted level</color>'
+      line4: '<color:#ADB5BD>• Use <color:#06FFA5>/jailoffline</color> for offline players (admin only)</color>'
+    banking-system:
+      header: '<gradient:#9D4EDD:#06FFA5>💡 Duty Banking Tips</gradient>'
+      line1: '<color:#ADB5BD>• Use <color:#06FFA5>/dutybank status</color> to check your balance</color>'
+      line2: '<color:#ADB5BD>• Use <color:#06FFA5>/dutybank convert</color> to exchange duty time for tokens</color>'
+      line3: '<color:#ADB5BD>• <color:#FFB3C6>100 seconds</color> of duty time = <color:#FFB3C6>1 token</color></color>'
+      line4: '<color:#ADB5BD>• Minimum conversion is <color:#FFB3C6>5 minutes</color> of duty time</color>'
+  
+  
+  duty:
+    activation:
+      success: <gradient:
+        are now on duty as <color:
+      already-on: <gradient:
+        are already actively serving!</color>
+      rank-detected: '<gradient:#06FFA5:#00E5FF>🏆 Rank Confirmed</gradient> <color:#ADB5BD>Guard
+        rank detected: <color:
+      kit-given: <gradient:
+        have been equipped with gear!</color>
+      kit-given-fallback: <gradient:
+        <color:
+      kit-failed: <gradient:
+        to equip your guard kit. Please contact an administrator.</color>
+    deactivation:
+      success: <gradient:
+        are now off duty and can relax!</color>
+      success-with-time: '<gradient:#ADB5BD:#868E96>🏠 Off Duty</gradient> <color:#ADB5BD>You
+        are now off duty! Available time: <color:
+      already-off: <gradient:
+        are already off duty!</color>
+    earning:
+      base-time-earned: <gradient:
+        earned <color:
+      performance-bonus: <gradient:
+        <color:
+    penalties:
+      cleared: <gradient:
+        off-duty penalties have been cleared!</color>
+      stage1-applied: <gradient:
+        been penalized for off-duty violations! Slowness applied.</color>
+      stage2-applied: <gradient:
+        penalty applied! Slowness now active.</color>
+      recurring-applied: <gradient:
+        <color:
+        Stage <color:
+      stage-set-notify: <gradient:
+        penalty stage has been set to <color:
+      simulated-notify: <gradient:
+        <color:
+        minutes by <color:
+    restrictions:
+      insufficient-time: <gradient:
+        need to wait before going on duty again!</color>
+      cannot-during-chase: <gradient:
+        cannot go off duty while in a chase!</color>
+      no-earned-off-duty-time: <gradient:
+        <color:
+        to earn a break.</color>
+      off-duty-time-expired: <gradient:
+        <color:
+      must-return-to-duty: <gradient:
+        <color:
+        go back on duty.</color>
+      wrong-region: <gradient:
+        must be in the guard station to activate duty!</color>
+      no-rank: <gradient:
+        don''t have a valid guard rank! Contact an administrator.</color>
+      movement-cancelled: <gradient:
+        <color:
+      left-region: <gradient:
+        activation cancelled - you left the guard station!</color>
+      combat-active: <gradient:
+        cannot change duty status while in combat!</color>
+      wanted-active: <gradient:
+        cannot go on duty while wanted!</color>
+    respawn:
+      kit-restored: <gradient:
+        guard kit has been restored after death!</color>
+    auto-activated: <gradient:
+      have been automatically placed on duty</color>
+  
+  
+  chase:
+    start:
+      success: <gradient:
+        started on <color:
+      target-notification: <gradient:
+        are being chased by <color:
+      guard-alert: <gradient:
+        started chasing <color:
+    end:
+      success: '<gradient:#ADB5BD:#868E96>🏁 Chase Ended</gradient> <color:#ADB5BD>Chase
+        ended: <color:
+      target-notification: '<gradient:#ADB5BD:#868E96>🏁 Chase Over</gradient> <color:#ADB5BD>The
+        chase has ended: <color:
+    capture:
+      success: <gradient:
+        captured! Starting jail process...</color>
+      target-notification: <gradient:
+        have been captured!</color>
+    restrictions:
+      not-on-duty: <gradient:
+        must be on duty to start a chase!</color>
+      
+      already-chasing: <gradient:
+        are already in a chase!</color>
+      target-being-chased: <gradient:
+        player is already being chased!</color>
+      cannot-chase-self: <gradient:
+        cannot chase yourself!</color>
+      too-far: <gradient:
+        is too far away to start a chase!</color>
+      max-concurrent: <gradient:
+        concurrent chases reached!</color>
+      capture-too-far: <gradient:
+        need to be closer to capture the target!</color>
+      combat-timer-active: <gradient:
+        capture during combat timer!</color>
+      target-in-combat: <gradient:
+        start chase while target is in combat!</color>
+      in-safe-zone: <gradient:
+        chase in safe zones!</color>
+      area-restricted: <gradient:
+        chase in this restricted area!</color>
+      different-worlds: <gradient:
+        and your target are not in the same world!</color>
+      too-far-to-start: <gradient:
+        are too far away to start a chase!</color>
+    warnings:
+      distance: '<gradient:#FFA94D:#FFB570>⚠️ Distance Warning</gradient> <color:#ADB5BD>Target
+        is getting far away! Distance: <color:
+    end-reasons:
+      plugin-shutdown: Plugin shutdown
+      player-offline: Player offline
+      target-too-far: Target too far away
+      target-restricted-area: Target entered restricted area
+      target-captured: Target captured
+      manually-ended-guard: Manually ended by guard
+      ended-by-admin: Ended by admin
+    blocking:
+      teleport: <gradient:
+        is blocked during chase!</color>
+      command: <gradient:
+        command is blocked during chase!</color>
+      area-entry: <gradient:
+        cannot enter this area while being chased!</color>
+      area-exit: <gradient:
+        cannot leave this area while being chased!</color>
+    errors:
+      region-check-failed: <gradient:
+        <color:
+      invalid-location: <gradient:
+        not determine a valid location.</color>
+      location-validation-failed: <gradient:
+        Failed</gradient> <color:
+        again.</color>
+      data-load-failed: <gradient:
+        not load chase data. Please contact an administrator.</color>
+      creation-failed: <gradient:
+        <color:
+      critical-error: <gradient:
+        critical error occurred. Please contact staff.</color>
+  
+  
+  jail:
+    success: <gradient:
+      successfully jailed for <color:
+    target-notification: '<gradient:#FF6B6B:#FF8E8E>🚔 You''ve Been Jailed</gradient>
+      <color:
+      <color:
+    arrest:
+      success: <gradient:
+        arrested and jailed for <color:
+      target-notification: '<gradient:#FF6B6B:#FF8E8E>🚔 You''ve Been Arrested</gradient>
+        <color:
+        <color:
+      guard-alert: <gradient:
+        successfully arrested <color:
+      offline-success: <gradient:
+        player has been jailed!</color>
+    countdown:
+      started: <gradient:
+        close to <color:
+        to complete arrest!</color>
+      target-notification: <gradient:
+        <color:
+      progress: <gradient:
+        seconds remaining...</color>
+      cancelled: '<gradient:#FFA94D:#FFB570>❌ Arrest Cancelled</gradient> <color:#ADB5BD>Arrest
+        countdown was cancelled: <color:
+      target-fled: <gradient:
+        moved too far away during arrest countdown!</color>
+      fled-chase-started: <gradient:
+        <color:
+      fled-chase-notification: <gradient:
+        <color:
+    restrictions:
+      already-active: <gradient:
+        are already in the process of arresting someone!</color>
+      not-on-duty: <gradient:
+        must be on duty to arrest players!</color>
+      too-far: '<gradient:#FF6B6B:#FF8E8E>📏 Too Far</gradient> <color:#ADB5BD>Target
+        is <color:
+      no-teleport-during-arrest: <gradient:
+        <color:
+    no-reason: No reason specified
+    manual-cancellation: Manually cancelled
+  
+  
+  wanted:
+    level:
+      set: <gradient:
+        wanted level has been set to <color:
+      cleared: <gradient:
+        wanted level has been cleared!</color>
+      increased: <gradient:
+        wanted level increased to <color:
+      reason: <gradient:
+    glow:
+      notification: <gradient:
+        is now glowing (Level <color:
+    restrictions:
+      guard-on-duty: <gradient:
+        on duty cannot be set as wanted!</color>
+    warnings:
+      attacking-guard: <gradient:
+        are attacking a guard! Your wanted level may increase!</color>
+    blocking:
+      teleport: <gradient:
+        is blocked while you have a wanted level!</color>
+    alerts:
+      guard-killed: <gradient:
+        killed guard <color:
+  
+  
+  restrictions:
+    mining: <gradient:
+      cannot mine while on duty!</color>
+    crafting: <gradient:
+      cannot craft while on duty!</color>
+    storage: <gradient:
+      cannot access storage while on duty!</color>
+    dropping: <gradient:
+      cannot drop items while on duty!</color>
+    duty-region-entry: <gradient:
+      cannot enter this area while on duty!</color>
+    duty-rank-zone-entry: <gradient:
+      rank cannot enter this area while on duty!</color>
+  
+  
+  contraband:
+    disabled: <gradient:
+      system is disabled!</color>
+    request:
+      success: '<gradient:#06FFA5:#00E5FF>🔍 Search Initiated</gradient> <color:#ADB5BD>Contraband
+        request sent to <color:
+      target-notification: <gradient:
+        <color:
+        seconds!</color>
+      too-far: <gradient:
+        is too far away to request contraband!</color>
+      already-active: <gradient:
+        contraband request is already active for that player!</color>
+      not-on-duty: <gradient:
+        must be on duty to request contraband!</color>
+      type-disabled: <gradient:
+        type is not configured or disabled!</color>
+      no-items: <gradient:
+        items configured for contraband type <color:
+    restrictions:
+      target-on-duty: <gradient:
+        cannot target guards on duty!</color>
+      target-self: <gradient:
+        cannot request contraband from yourself!</color>
+    detection:
+      found: '<gradient:#FF6B6B:#FF3838>⚠️ Contraband Detected</gradient> <color:#ADB5BD>Contraband
+        detected: <color:
+      compliance-request: <gradient:
+        <color:
+        seconds!</color>
+      compliance-success: <gradient:
+        <color:
+      compliance-failed: <gradient:
+        <color:
+      item-dropped: '<gradient:#51CF66:#7ED321>📦 Item Dropped</gradient> <color:#ADB5BD>Required
+        item dropped: <color:
+      wrong-item: '<gradient:#FFE066:#FFD43B>⚠️ Wrong Item</gradient> <color:#ADB5BD>That''s
+        not the requested item: <color:
+      request-completed: <gradient:
+        request completed successfully!</color>
+      timeout: <gradient:
+        request timed out! Wanted level increased!</color>
+    chase:
+      started: '<gradient:#FF6B6B:#FF3838>🏃 Chase Started</gradient> <color:#ADB5BD>Chase
+        initiated for <color:
+      target-notification: '<gradient:#FF6B6B:#FF3838>🏃 Chase Initiated</gradient>
+        <color:
+    removal:
+      captured: <gradient:
+        contraband items have been confiscated!</color>
+    drug-test:
+      kit-used: <gradient:
+        test kit used on <color:
+      positive: <gradient:
+        test positive for <color:
+      negative: <gradient:
+        test negative.</color>
+    potion-test:
+      kit-used: <gradient:
+        test kit used on <color:
+      positive: <gradient:
+        test positive for <color:
+      negative: <gradient:
+        test negative.</color>
+  
+  
+  combat:
+    timer-started: <gradient:
+      timer activated!</color>
+    timer-ended: <gradient:
+      timer expired.</color>
+    teleport-blocked: <gradient:
+      blocked during combat!</color>
+  
+  
+  banking:
+    status: '<gradient:#06FFA5:#00E5FF>💰 Duty Banking Status</gradient> <color:#ADB5BD>Time:
+      <color:
+    status-header: <gradient:
+    earned-time: '<gradient:#06FFA5:#00E5FF>⏰ Earned Time</gradient> <color:#ADB5BD>Total
+      earned off-duty time: <color:
+    duty-time: '<gradient:#06FFA5:#00E5FF>🛡️ Duty Time</gradient> <color:#ADB5BD>Total
+      accumulated duty time: <color:
+    available-tokens: '<gradient:#06FFA5:#00E5FF>💰 Available Tokens</gradient> <color:#ADB5BD>Tokens
+      available for conversion: <color:
+    conversion-rate: '<gradient:#06FFA5:#00E5FF>📊 Conversion Rate</gradient> <color:#ADB5BD>Rate:
+      <color:
+    minimum-time: '<gradient:#06FFA5:#00E5FF>⏱️ Minimum Time</gradient> <color:#ADB5BD>Minimum
+      time required: <color:
+    conversion-success: <gradient:
+      <color:
+    insufficient-time: '<gradient:#FF6B6B:#FF8E8E>⏰ Insufficient Time</gradient> <color:#ADB5BD>Insufficient
+      duty time for conversion! Minimum: <color:
+    auto-conversion: <gradient:
+      duty time to tokens!</color>
+    disabled: <gradient:
+      banking is disabled!</color>
+  
+  
+  bossbar:
+    wanted:
+      active: <gradient:
+        <color:
+    chase:
+      target: '<gradient:#74C0FC:#4DABF7>🏃 BEING CHASED by {guard}</gradient> <color:#ADB5BD>Distance:
+        {distance}m</color>'
+      guard: '<gradient:#74C0FC:#4DABF7>🏃 CHASING {target}</gradient> <color:#ADB5BD>Distance:
+        {distance}m</color>'
+    penalty: <gradient:
+      {stage} - {minutes} minutes overrun</color>
+    grace-period: <gradient:
+      remaining</color>
+    combat-timer: <gradient:
+      remaining</color>
+    jail-countdown: <gradient:
+      remaining</color>
+    duty-transition: <gradient:
+      remaining - Stay still!</color>
+    contraband-countdown: <gradient:
+      remaining</color>
+  
+  
+  loot:
+    reloaded: <gradient:
+      loot configuration reloaded.</color>
+    info: <gradient:
+      test [rank]</color>, <color:
+      info</color>.</color>
+    no-rank: <gradient:
+      determine your guard rank.</color>
+    test-complete: <gradient:
+      drops for rank <color:
+  
+  
+  retrieve:
+    success: <gradient:
+      stored inventory has been returned.</color>
+    no-inventory: <gradient:
+      stored inventory was found.</color>
+    not-guard: <gradient:
+      must be a guard to use this.</color>
+    find-reaper: <gradient:
+      is only available at the Reaper. Find him in the prison.</color>
+  
+  
+  admin:
+    wanted:
+      set-success: <gradient:
+        <color:
+      clear-success: <gradient:
+        <color:
+      check-result: <gradient:
+        has wanted level <color:
+      check-time: '<color:#ADB5BD>Time remaining: <color:#FFB3C6>{time}</color></color>'
+      check-reason: '<color:#ADB5BD>Reason: <color:#FFB3C6>{reason}</color></color>'
+      check-none: <gradient:
+        has no wanted level</color>
+      list-header: <gradient:
+      list-entry: '<color:#ADB5BD>- <color:#FFB3C6>{player}</color>: Level <color:#FFB3C6>{level}</color>
+        <color:
+      list-none: <gradient:
+        players are currently wanted</color>
+    chase:
+      list-header: <color:
+      list-none: <gradient:
+        are no active chases to display</color>
+      list-entry: <color:
+      end-success: <gradient:
+        ended chase for <color:
+      end-all-success: <gradient:
+        ended <color:
+      not-in-chase: <gradient:
+        player is not currently in a chase</color>
+    duty:
+      list-header: <color:
+      list-on-duty: <color:
+      list-off-duty: <color:
+      not-guard: <gradient:
+        <color:
+      time-check: '<gradient:#06FFA5:#00E5FF>⏰ Duty Time Status</gradient> <color:#ADB5BD>{player}
+        - Earned: {earned} | Used: {used} | Available: {available}</color>'
+      
+      time-modified: <gradient:
+        modified <color:
+      time-modified-notify: '<gradient:#06FFA5:#00E5FF>🔧 Time Modified</gradient>
+        <color:
+      time-reset: <gradient:
+        reset <color:
+      time-reset-notify: <gradient:
+        duty time has been reset by <color:
+      penalties-none: <gradient:
+        has no active penalties</color>
+      penalties-check: '<gradient:#FFA94D:#FFB570>⚠️ Penalty Status</gradient> <color:#ADB5BD>{player}
+        - Stage: {stage} | Overrun: {overrun}</color>'
+      penalties-cleared: <gradient:
+        <color:
+      penalties-cleared-notify: <gradient:
+        <color:
+    penalty:
+      reset-success: <gradient:
+        reset penalties for <color:
+      reset-notification: <gradient:
+        penalties have been reset by <color:
+      bypass-success: <gradient:
+        bypassed penalties for <color:
+        earned time</color>
+      bypass-notification: <gradient:
+        <color:
+        and you received <color:
+    bypass:
+      cooldown-success: <gradient:
+        bypassed cooldown for <color:
+      cooldown-notified: <gradient:
+        cooldown has been bypassed by <color:
+      restrictions-success: <gradient:
+        <color:
+      restrictions-failed: <gradient:
+        to bypass restrictions for <color:
+    system:
+      stats-header: <color:
+      stats-online: '<color:#FFB3C6>Online Players: {online}/{max}</color>'
+      stats-chases: '<color:#FFB3C6>Active Chases: {count}</color>'
+      stats-debug: '<color:#FFB3C6>Debug Mode: {status}</color>'
+      debug-status-enabled: <color:
+      debug-status-disabled: <color:
+      debug-enabled: <color:
+      debug-disabled: <color:
+    stats:
+      modification-success: <gradient:
+        <color:
+        to <color:
+      modification-failed: <gradient:
+        not modify <color:
+    player:
+      stats:
+        header: <gradient:
+        current-session: <gradient:
+        duty-time: <gradient:
+        earned-time: <gradient:
+          <color:
+        searches: <gradient:
+        successful-searches: <gradient:
+          <color:
+        arrests: <gradient:
+        kills: <gradient:
+        detections: <gradient:
+        total-stats: <gradient:
+        total-duty-time: <gradient:
+        total-arrests: <gradient:
+        total-violations: <gradient:
+          <color:
+        progression-header: <gradient:
+        current-rank: '<color:#ADB5BD>Current Rank: {rank}</color>'
+        promotion-status: '<color:#ADB5BD>Promotion to {rank}: {status}</color>'
+  
+  
+  guard:
+    death:
+      announcement: <gradient:
+        ({player}) was killed at {location}</color>
+  
+  
+  player:
+    no-data: <gradient:
+      data found for player <color:
+    info:
+      header: <gradient:
+      name: <gradient:
+      rank: <gradient:
+      duty-status: <gradient:
+      wanted-level: <gradient:
+      chase-status: <gradient:
+      total-duty-time: <gradient:
+      total-arrests: <gradient:
+      total-violations: <gradient:
+      progression-header: <gradient:
+      current-rank: '<color:#ADB5BD>Current Rank: {rank}</color>'
+      next-rank: '<color:#ADB5BD>Next Rank: {rank}</color>'
+      rank-progress: '<color:#ADB5BD> Progress: Arrests: {arrests}/{required_arrests}
+        Duty Time: {current_time}s/{required_time}s Status: {status}</color>'
+      max-rank: <gradient:
+    stats:
+      header: <gradient:
+      current-session: <gradient:
+      duty-time: <gradient:
+      earned-time: <gradient:
+      searches: <gradient:
+      successful-searches: <gradient:
+        <color:
+      arrests: <gradient:
+      kills: <gradient:
+      detections: <gradient:
+      total-stats: <gradient:
+      total-duty-time: <gradient:
+      total-arrests: <gradient:
+      total-violations: <gradient:
+      progression-header: <gradient:
+      current-rank: '<color:#ADB5BD>Current Rank: {rank}</color>'
+      promotion-status: '<color:#ADB5BD>Promotion to {rank}: {status}</color>'
+      max-rank-achieved: <gradient:
+    time:
+      header: <gradient:
+      earned-time: <gradient:
+      required-duty: <gradient:
+      current-duty: <gradient:
+      base-earned: <gradient:
+      banking-tokens: <gradient:
+      banking-time: <gradient:
+  
+  
+  security:
+    guard-immunity:
+      combat-protected: <gradient:
+        cannot attack <color:
+      attack-blocked: <gradient:
+        attack was blocked by guard immunity!</color>
+      teleport-blocked: <gradient:
+        cannot be teleported while on duty!</color>
+      wanted-protected: <gradient:
+        on duty cannot be set as wanted!</color>
+      chase-protected: <gradient:
+        on duty cannot be chased!</color>
+      contraband-protected: <gradient:
+        <color:
+      jail-protected: <gradient:
+        on duty cannot be jailed!</color>
+      combat-protection: false 
+      teleport-protection: true 
+      guard-to-guard-blocked: <gradient:
+        cannot attack <color:
+    violation-alert: <gradient:
+      attempted on protected guard {player}!</color>
+  
+  
+  progression:
+    disabled: <gradient:
+      is disabled</color>
+    not-guard: <gradient:
+      must be a guard to use progression.</color>
+    no-rank: <gradient:
+      have a guard rank to view progression</color>
+    max-rank: <gradient:
+      are already {rank} (highest rank)</color>
+    target-no-rank: <gradient:
+      does not have a guard rank</color>
+    status: <gradient:
+      - {current} Next Rank - {next} Progress - Arrests - {arrests}/{required_arrests}
+      Duty Time - {current_time}s/{required_time}s Use /progress promote when ready!
+    progress-status: <gradient:
+      Rank - {current} Next Rank - {next} Progress - Arrests - {arrests}/{required_arrests}
+      Duty Time - {current_time}s/{required_time}s
+    not-ready-yet: <gradient:
+      are not ready for promotion yet. Check your requirements.</color>
+    rank-limit-reached: <gradient:
+    rankup-requirements: <gradient:
+      <color:
+      Duty Time - {current_time}s/{required_time}s</color>
+    info: '<gradient:#06FFA5:#00E5FF>📊 Player Progression</gradient> Player: {player}
+      Current Rank: {rank} Statistics: Total Arrests: {arrests} Total Duty Time: {time}s'
+    vault-requirement: '<color:#FFE066>💰 Vault Requirement: {have}/{need} (need {shortfall})</color>'
+    tokens-requirement: '<color:#06FFA5>🪙 Token Requirement: {have}/{need} (need
+      {shortfall})</color>'
+    promoted: <gradient:
+      → {next}</color>
+    admin:
+      force-promoted: <gradient:
+        {player} on the {track} track.</color>
+      force-demoted: <gradient:
+        {player} on the {track} track.</color>
+    admin-promoted: <gradient:
+      promoted {player} from {from} to {to}</color>
+    luckperms-error: <gradient:
+      integration unavailable</color>
+    track-not-found: <gradient:
+      "{track}" not found</color>
+    promotion-error: <gradient:
+      to promote - contact an admin</color>
+    progress-vault: '<gradient:#06FFA5:#00E5FF>💰 Vault Progress</gradient> <color:#ADB5BD>Vault
+      requirement: <color:
+      (<color:
+    progress-tokens: '<gradient:#06FFA5:#00E5FF>🪙 Token Progress</gradient> <color:#ADB5BD>Token
+      requirement: <color:
+      (<color:
+    ready-to-rankup: <gradient:
+      <color:
+  
+  
+  guard-spawn:
+    set-success: <gradient:
+      spawn location set at <color:
+      {z}</color></color>
+    cleared: <gradient:
+      spawn location has been cleared</color>
+    not-set: <gradient:
+      spawn location is not configured</color>
+    info: <gradient:
+      - <color:
+      <color:
+    respawned: <gradient:
+      at guard spawn location</color>
+  
+  
+  transfer:
+    not-guard: <gradient:
+      guards can use the transfer system</color>
+    system-disabled: <gradient:
+      system requires guard-system.default-on-duty to be enabled</color>
+    no-item-held: <gradient:
+      must hold an item in your main hand to transfer it</color>
+    guard-kit-restricted: <gradient:
+      <color:
+    blacklisted-item: <gradient:
+      transfer blacklisted item - <color:
+    must-be-on-duty: <gradient:
+      must be on duty to transfer items to your off-duty inventory</color>
+    must-be-off-duty: <gradient:
+      must be off duty to transfer items to your on-duty inventory</color>
+    to-offduty-success: <gradient:
+      <color:
+      inventory</color>
+    to-onduty-success: <gradient:
+      <color:
+      inventory</color>
+    to-offduty-failed: <gradient:
+      not transfer item to off-duty inventory</color>
+    to-onduty-failed: <gradient:
+      not transfer item to on-duty inventory</color>
+    info-header: <gradient:
+    info-description: <color:
+      off-duty inventories</color>
+    info-restrictions: <color:
+      transferred<newline>• Blacklisted items (see config) are also blocked</color>
+    info-current-onduty: <color:
+      off-duty inventory</color>
+    info-current-offduty: <color:
+      TO on-duty inventory</color>
+    info-usage: <color:
+  
+  
+  help:
+    corrections:
+      header: <gradient:
+      title: <gradient:
+      divider: <gradient:
+      wanted: <color:
+      chase: <color:
+      duty: <color:
+      player: <color:
+      player-modify: <color:
+      system: <color:
+      reload: <color:
+      help: <color:
+      footer: <gradient:
+      header: <gradient:
+      title: <gradient:
+      divider: <gradient:
+      wanted: <color:
+        levels</color>
+      chase: <color:
+      duty: <color:
+      player: <color:
+        management</color>
+      player-modify: <color:
+        - Modify player stats</color>
+      system: <color:
+      reload: <color:
+      help: <color:
+      footer: <gradient:
+      console:
+        header: === EdenCorrections Admin Commands ===
+        wanted: /corrections wanted <set|clear|check|list> - Manage wanted levels
+        chase: /corrections chase <list|end|endall> - Manage active chases
+        duty: /corrections duty <list|time|force> - Manage guard duty
+        player: /corrections player <info|stats|reset|modify> - Player management
+        player-modify: /corrections player modify <player> <stat> <value> - Modify
+          player stats
+        system: /corrections system <stats|debug|spam> - System information
+        reload: /corrections reload - Reload configuration
+        help: /corrections help - Show this help menu
+        footer: =======================================
+  
+  
+  actionbar:
+    progression-gain: <color:
+    contraband-request: <gradient:
+      remaining</color>
+    contraband-compliance: <gradient:
+      dropping the requested items...</color>
+    duty-activated: <gradient:
+      safe out there.</color>
+    duty-deactivated: <gradient:
+      your break.</color>
+    combat-active: <gradient:
+    banking-available: <gradient:
+      can convert duty time now.</color>
+    miss: <gradient:
+
+config-version: 2
+
